@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "起点也摸鱼",
+    "version": "2.1.1",
+    "description": "看小说时假装在写word.",
+    "content_scripts": [
+      {
+        "matches": ["*://www.qidian.com/chapter/*"],
+        "css": ["style.css"],
+        "js": ["content.js"],
+        "run_at": "document_start" 
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["word.html","img/background.png"],
+        "matches": ["*://www.qidian.com/*"]
+      }
+    ],
+    "icons": {
+      "16": "img/128icon.png",
+      "32": "img/128icon.png",
+      "48": "img/128icon.png",
+      "128": "img/128icon.png"
+    }
+  }
+  

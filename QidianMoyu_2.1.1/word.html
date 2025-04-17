@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>起点也摸鱼</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-image: url('img/background.png'); /* 替换为你的背景图像的实际路径 */
+            background-repeat: repeat; /* 平铺背景图像 */
+            background-size: 100%; /* 保持原始尺寸 */
+            background-attachment: fixed; /* 背景图像固定，不随页面滚动 */
+        }
+        .top-image {
+            width: 100%;
+            height: 15%; 
+            /* background: url('img/top-image.png') no-repeat center center; */
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .left-image {
+            width: 20%; /* 自定义宽度 */
+            /* background: url('img/left-image.png') no-repeat center center; */
+            background-size: cover;
+            position: fixed;
+            top: 15%; /* 同顶部图片的高度 */
+            bottom: 0;
+            left: 0;
+        }
+        .right-image {
+            width: 22%; /* 自定义宽度 */
+            /* background: url('img/right-image.png') no-repeat center center; */
+            background-size: cover;
+            position: fixed;
+            top: 15%; /* 同顶部图片的高度 */
+            bottom: 0;
+            right: 0;
+        }
+        .content {
+           /*  margin: 270px 430px 0 400px; 顶部和左右图片的高度和宽度 */
+            margin: 15% 22% 0 20%; /* 顶部和左右图片的高度和宽度 */
+            height: calc(100% - 200px);
+            overflow-y: auto;
+            background-color: #ffffff; /* 可自定义背景颜色 */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a id="catalog" href = "//moyu.city" title="目录"><div class="top-image"></div></a>
+    <a id="previous" title = "上一章" href="#"><div class="left-image"></div></a>
+    <a id="next" title="下一章" href="#"><div class="right-image"></div></a>
+    <div class="content">
+        <p>按F11全屏，再按F11退出全屏</p>
+        <content>
+            <p>内容很多，展示区需要有上下的滚动条。</p>
+            <!-- 在这里添加更多内容 -->
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+            <p>这里是内容...</p>
+        </content>
+        <div style="margin-bottom: 200px;">
+            <a href="//moyu.city" target="_blank">个人网站：www.moyu.city</a>
+            <p>交流与反馈发送邮件至邮箱：amin.he@139.com</p>
+        </div>
+        
+    </div>
+    <script>
+        const iframes = [
+            "https://moyu.city",
+            "https://moyu.city"
+        ];
+
+        const content = document.querySelector('content');
+        const paragraphs = content.getElementsByTagName('p');
+        const numberOfIframesToInsert = 2; // 可以在这里配置需要插入的iframe数量
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function insertRandomIframes(numIframes) {
+            const insertedIndices = new Set();
+
+            for (let i = 0; i < numIframes; i++) {
+                let randomIndex;
+                do {
+                    randomIndex = getRandomInt(1, paragraphs.length);
+                } while (insertedIndices.has(randomIndex));
+                insertedIndices.add(randomIndex);
+
+                const iframe = document.createElement('iframe');
+                iframe.src = iframes[getRandomInt(0, iframes.length)];
+                iframe.style.width = '100%'; // 设置iframe宽度为100%
+                iframe.style.height = '500px'; // 设置iframe高度为500px，可以根据需要调整
+                paragraphs[randomIndex].insertAdjacentElement('beforebegin', iframe);
+            }
+        }
+
+        insertRandomIframes(numberOfIframesToInsert);
+    </script>
+</body>
+</html>
